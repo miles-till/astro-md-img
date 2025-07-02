@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("posts");
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Posts</title>
+	</head>
+	<body>
+		<h1>Posts</h1>
+		<ul>
+		{
+			posts.map((post) => (
+			<li>
+				<a href={`/posts/${post.id}`}>{post.id}</a>
+			</li>
+			))
+		}
+		</ul>
+	</body>
+</html>
